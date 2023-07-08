@@ -21,5 +21,5 @@ for file in *_R1_m.fastq;do
 	bwa mem -M -t 1 $REFERENCE ${bn}_R1_m.fastq ${bn}_R2_m.fastq | samtools view -bS - | samtools sort - > ${bn}.sorted.bam
 	samtools index ${bn}.sorted.bam
 	samtools coverage ${bn}.sorted.bam -o ${bn}.cov_out -m -w 100
-	samtools coverage -r scaffold_35:1-24227604 ${bn}.sorted.bam -o ${bn}.sdr.cov
+	samtools coverage -r scaffold_3:1-24227604 ${bn}.sorted.bam -o ${bn}.sdr.cov
 done

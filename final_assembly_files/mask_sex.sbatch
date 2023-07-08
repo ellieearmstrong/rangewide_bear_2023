@@ -1,5 +1,5 @@
 #!/bin/bash
-##SBATCH --job-name=busco-americancheetah
+##SBATCH --job-name=mask_ref
 ##SBATCH --time=4:00:00
 ##SBATCH --mem=120000
 ##SBATCH --partition=normal,hns,dpetrov
