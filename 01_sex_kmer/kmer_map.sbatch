@@ -12,7 +12,7 @@
 module load samtools/1.11
 module load bwa/0.7.17
 
-REFERENCE=Ursus_arctos_trio.hap1_JBAT_hap2X.FINAL.fa
+REFERENCE=/data/kelley/projects/ellie_projects/relatedness/bear_relationships/reference/Ursus_arctos_trio.hap1_JBAT_hap2X.FINAL.fa
 
 bwa index -a bwtsw $REFERENCE
 
