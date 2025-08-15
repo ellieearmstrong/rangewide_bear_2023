@@ -49,5 +49,6 @@ def calculate_depth_metrics(row):
 df[["Depth_Sites", "Mean_Depth"]] = df.apply(calculate_depth_metrics, axis=1)
 
 # Write result
+#this outputs the number of sites with depth information (i.e. coverage and the avg depth of those sites)
 df.to_csv(out_file, sep="\t", index=False)
 print(f"[{datetime.now()}] Finished processing {roh_filename}, wrote to {out_file}", flush=True)
