@@ -1,9 +1,31 @@
-import pysam
-import gzip
+#!/usr/bin/env python3
 import sys
+import gzip
 import csv
+import pysam
 
-# === Setup ===
+"""
+Usage:
+  python correct_vcf_per_chrom.py <chromosome> <vcf.gz> <ancestral.tsv.gz>
+
+Outputs:
+  - ref_equals_ancestral.<chrom>.vcf.gz
+  - ref_equals_ancestral.<chrom>.summary.tsv
+
+This version:
+  • Tracks the requested statistics:
+      num_sites, num_var, num_invar, num_anc, num_sites_with_anc,
+      num_var_with_anc, num_invar_with_anc,
+      var_anc_match, invar_anc_match,
+      var_anc_flip,  invar_anc_flip,
+      var_anc_nomatch, invar_anc_nomatch
+  • Invariant-site update when ancestral != REF:
+      - REF becomes ancestral (AA)
+      - ALT becomes the original REF
+      - All 0/0 become 1/1; missing ./ . stays missing
+"""
+
+# ---------- Args ----------
 if len(sys.argv) != 4:
     sys.stderr.write("Usage: python correct_vcf_per_chrom.py <chromosome> <vcf.gz> <ancestral.tsv.gz>\n")
     sys.exit(1)
@@ -11,189 +33,276 @@ if len(sys.argv) != 4:
 chrom_target = sys.argv[1]
 vcf_path = sys.argv[2]
 ancestral_path = sys.argv[3]
-output_path = f"ref_equals_ancestral.{chrom_target}.vcf.gz"
+
+output_path  = f"ref_equals_ancestral.{chrom_target}.vcf.gz"
 summary_path = f"ref_equals_ancestral.{chrom_target}.summary.tsv"
 
-# === Read ancestral data for the chromosome ===
-ancestral_dict = {}
-n_missing_anc1 = 0
-with gzip.open(ancestral_path, "rt") as f:
-    header = f.readline().strip().split("\t")
-    col_idx = {col: i for i, col in enumerate(header)}
+# ---------- Read ALL ancestral calls for this chromosome ----------
+# We keep only rows with a non-empty Anc1; positions are converted 0->1 based.
+ancestral = {}  # key: (chrom, pos1) -> (Urar, Anc1)
+num_anc = 0
 
+with gzip.open(ancestal_path if (ancestal_path := ancestral_path) else ancestral_path, "rt") as f:
+    header = f.readline().rstrip("\n").split("\t")
+    idx = {c: i for i, c in enumerate(header)}
+    # Required columns: refSequence, refPosition (0-based), Urar, Anc1
     for line in f:
-        parts = line.strip().split("\t")
-        chrom = parts[col_idx["refSequence"]]
+        parts = line.rstrip("\n").split("\t")
+        chrom = parts[idx["refSequence"]]
         if chrom != chrom_target:
             continue
-        anc1 = parts[col_idx["Anc1"]].strip().upper() if len(parts) > col_idx["Anc1"] else ""
+        anc1 = parts[idx["Anc1"]].strip().upper() if len(parts) > idx["Anc1"] else ""
         if anc1 == "":
-            n_missing_anc1 += 1
             continue
-        pos = int(parts[col_idx["refPosition"]]) + 1
-        urar = parts[col_idx["Urar"]].strip().upper()
-        ancestral_dict[(chrom, pos)] = (urar, anc1)
+        pos1 = int(parts[idx["refPosition"]]) + 1  # 0-based -> 1-based (VCF)
+        urar = parts[idx["Urar"]].strip().upper()
+        ancestral[(chrom, pos1)] = (urar, anc1)
+        num_anc += 1
 
-# === Prepare VCF input/output ===
+# ---------- Open VCF I/O ----------
 vcf_in = pysam.VariantFile(vcf_path, "r")
-vcf_header = vcf_in.header.copy()
-vcf_header.info.add("AA", 1, "String", "Ancestral allele")
-if "GT" not in vcf_header.formats:
-    vcf_header.formats.add("GT", 1, "String", "Genotype")
-vcf_out = pysam.VariantFile(output_path, "wz", header=vcf_header)
+hdr = vcf_in.header.copy()
 
-valid_info_keys = set(vcf_header.info.keys())
+# Ensure AA INFO + GT FORMAT exist
+if "AA" not in hdr.info:
+    hdr.info.add("AA", 1, "String", "Ancestral allele")
+if "GT" not in hdr.formats:
+    hdr.formats.add("GT", 1, "String", "Genotype")
 
-# === Counters ===
-n_total = n_ref_match = n_flipped = n_nomatch = n_written = n_unmapped = 0
-n_nonvariant = n_symbolic_alt = 0
-ancestral_alleles = 0
-derived_alleles = 0
-invar_total = invar_anc_match = invar_anc_mismatch = invar_anc_missing = invar_no_anc = 0
+vcf_out = pysam.VariantFile(output_path, "wz", header=hdr)
+valid_info_keys = set(hdr.info.keys())
 
-# === Main processing ===
+# ---------- Counters ----------
+num_sites  = 0         # all records in this chromosome (variant + invariant)
+num_var    = 0         # variant records (alts != None and not symbolic)
+num_invar  = 0         # invariant records (alts is None)
+
+# Overlap counts with ancestral dictionary
+num_sites_with_anc   = 0
+num_var_with_anc     = 0
+num_invar_with_anc   = 0
+
+# Classification (only among sites that HAVE an ancestral call)
+var_anc_match     = 0
+var_anc_flip      = 0
+var_anc_nomatch   = 0
+invar_anc_match   = 0
+invar_anc_flip    = 0
+invar_anc_nomatch = 0
+
+# ---------- Helpers ----------
+def is_symbolic_variant(rec):
+    return rec.alts is not None and any(str(a).startswith("<") for a in rec.alts)
+
+def copy_common_fields(src, dst):
+    dst.contig = src.contig
+    dst.start  = src.start
+    dst.id     = src.id
+    dst.qual   = src.qual
+    dst.filter.clear()
+    for f in src.filter.keys():
+        dst.filter.add(f)
+
+def remap_genotype(gt, allele_map):
+    """
+    Map each allele index according to allele_map (dict old->new).
+    Keep None (missing) untouched; leave other integers untouched if unseen.
+    """
+    if gt is None:
+        return None
+    new = []
+    for a in gt:
+        if a is None:
+            new.append(None)
+        else:
+            new.append(allele_map.get(a, a))
+    return tuple(new)
+
+# ---------- Main loop ----------
 for rec in vcf_in.fetch(chrom_target):
-    n_total += 1
+    num_sites += 1
     key = (rec.chrom, rec.pos)
 
-    # Non-variant site
+    # Invariant site
     if rec.alts is None:
-        n_nonvariant += 1
-        invar_total += 1
-        if key not in ancestral_dict:
-            invar_no_anc += 1
-            continue
-        urar, anc1 = ancestral_dict[key]
-        if anc1 == "":
-            invar_anc_missing += 1
-            continue
-        if rec.ref.upper() == anc1:
-            invar_anc_match += 1
-            continue
+        num_invar += 1
+        has_anc = key in ancestral
+        if has_anc:
+            num_sites_with_anc += 1
+            num_invar_with_anc += 1
+            urar, anc1 = ancestral[key]
+
+            # Sanity: ensure the table's Urar matches the VCF REF (same reference build)
+            if rec.ref.upper() != urar:
+                # If these don't match, we can't safely reinterpret this locus; count as "nomatch".
+                invar_anc_nomatch += 1
+                continue
+
+            if rec.ref.upper() == anc1:
+                # REF already equals ancestral
+                invar_anc_match += 1
+                # Nothing to write (still invariant), but we could emit a copy with AA if desired.
+                continue
+            else:
+                # REF != ancestral -> flip invariant site as requested:
+                # new REF = ancestral; new ALT = original REF; all 0/0 -> 1/1; ./ . untouched
+                invar_anc_flip += 1
+                invar_anc_nomatch += 1  # also counts as "ref does not match ancestral"
+
+                rec_copy = vcf_out.new_record()
+                copy_common_fields(rec, rec_copy)
+                rec_copy.ref  = anc1
+                rec_copy.alts = (rec.ref,)  # original REF becomes ALT
+                rec_copy.info["AA"] = anc1
+
+                for sample in rec.samples:
+                    gt = rec.samples[sample].get("GT")
+                    # Flip only definite 0/0 to 1/1; leave missing as missing
+                    if gt is None or any(a is None for a in gt):
+                        rec_copy.samples[sample]["GT"] = gt
+                    else:
+                        # If caller somehow encoded non 0/0 at an invariant record, preserve structure but push to ALT
+                        # Typical invariant will be (0,0); we map 0->1.
+                        allele_map = {0: 1}
+                        rec_copy.samples[sample]["GT"] = remap_genotype(gt, allele_map)
+
+                vcf_out.write(rec_copy)
         else:
-            invar_anc_mismatch += 1
-            # Write as homozygous derived (1/1) with ancestral in AA
-            fake_alt = anc1
-            rec_copy = vcf_out.new_record()
-            rec_copy.contig = rec.contig
-            rec_copy.start = rec.start
-            rec_copy.id = rec.id
-            rec_copy.ref = rec.ref
-            rec_copy.alts = [fake_alt]
-            rec_copy.qual = rec.qual
-            rec_copy.filter.clear()
-            for f in rec.filter.keys():
-                rec_copy.filter.add(f)
-            rec_copy.info["AA"] = anc1
-            for sample in rec.samples:
-                rec_copy.samples[sample]["GT"] = (1, 1)
-                derived_alleles += 2
-            vcf_out.write(rec_copy)
-            n_written += 1
+            # no ancestral call for this site
+            pass
+        continue  # done with invariant
+
+    # Symbolic ALT variants are ignored for all statistics except num_sites (we do NOT count them in num_var)
+    if is_symbolic_variant(rec):
+        continue
+
+    # Non-symbolic variant
+    num_var += 1
+    has_anc = key in ancestral
+    if has_anc:
+        num_sites_with_anc += 1
+        num_var_with_anc   += 1
+        urar, anc1 = ancestral[key]
+
+        # Sanity check against Urar
+        if rec.ref.upper() != urar:
+            # Can't reconcile—treat as nomatch and skip
+            var_anc_nomatch += 1
             continue
 
-    # Symbolic ALT (skip)
-    if any(str(alt).startswith("<") for alt in rec.alts):
-        n_symbolic_alt += 1
-        continue
+        refU = rec.ref.upper()
+        altsU = [a.upper() for a in rec.alts]
 
-    # Process variant site
-    if key not in ancestral_dict:
-        n_unmapped += 1
-        continue
-    urar, anc1 = ancestral_dict[key]
-    if rec.ref.upper() != urar:
-        continue
-    n_ref_match += 1
-    alt_alleles = [a.upper() for a in rec.alts]
+        if anc1 == refU:
+            # Ancestral equals REF -> write unchanged (but add AA)
+            var_anc_match += 1
 
-    # --- Case 1: Anc == REF ---
-    if anc1 == rec.ref.upper():
-        rec_copy = vcf_out.new_record()
-        rec_copy.contig = rec.contig
-        rec_copy.start = rec.start
-        rec_copy.id = rec.id
-        rec_copy.ref = rec.ref
-        rec_copy.alts = rec.alts
-        rec_copy.qual = rec.qual
-        rec_copy.filter.clear()
-        for f in rec.filter.keys():
-            rec_copy.filter.add(f)
-        for k, v in rec.info.items():
-            if k in valid_info_keys:
-                rec_copy.info[k] = v
-        rec_copy.info["AA"] = anc1
-        for sample in rec.samples:
-            if "GT" in rec.samples[sample]:
-                gt = rec.samples[sample]["GT"]
-                rec_copy.samples[sample]["GT"] = gt
-                if gt:
-                    for allele in gt:
-                        if allele == 0:
-                            ancestral_alleles += 1
-                        elif allele == 1:
-                            derived_alleles += 1
-        vcf_out.write(rec_copy)
-        n_written += 1
-        continue
+            rec_copy = vcf_out.new_record()
+            copy_common_fields(rec, rec_copy)
+            rec_copy.ref  = rec.ref
+            rec_copy.alts = rec.alts
+            # Preserve existing INFO except unknown keys (header check)
+            for k, v in rec.info.items():
+                if k in valid_info_keys:
+                    rec_copy.info[k] = v
+            rec_copy.info["AA"] = anc1
 
-    # --- Case 2: Anc == ALT ---
-    if anc1 in alt_alleles:
-        flip_idx = alt_alleles.index(anc1)
-        new_ref = rec.alts[flip_idx]
-        new_alts = [rec.ref] + [a for i, a in enumerate(rec.alts) if i != flip_idx]
-        rec_copy = vcf_out.new_record()
-        rec_copy.contig = rec.contig
-        rec_copy.start = rec.start
-        rec_copy.id = rec.id
-        rec_copy.ref = new_ref
-        rec_copy.alts = tuple(new_alts)
-        rec_copy.qual = rec.qual
-        rec_copy.filter.clear()
-        for f in rec.filter.keys():
-            rec_copy.filter.add(f)
-        for k, v in rec.info.items():
-            if k in valid_info_keys and k not in ["AC", "AF", "AN"]:
-                rec_copy.info[k] = v
-        rec_copy.info["AA"] = anc1
-        for sample in rec.samples:
-            if "GT" in rec.samples[sample]:
-                gt = rec.samples[sample]["GT"]
-                if gt:
-                    new_gt = tuple(1 if a == 0 else 0 if a == 1 else a for a in gt)
-                    rec_copy.samples[sample]["GT"] = new_gt
-                    for allele in new_gt:
-                        if allele == 0:
-                            ancestral_alleles += 1
-                        elif allele == 1:
-                            derived_alleles += 1
-        vcf_out.write(rec_copy)
-        n_flipped += 1
-        n_written += 1
-        continue
+            # Copy GTs as-is
+            for sample in rec.samples:
+                gt = rec.samples[sample].get("GT")
+                if gt is not None:
+                    rec_copy.samples[sample]["GT"] = gt
 
-    # --- Case 3: Anc does not match REF or ALT ---
-    n_nomatch += 1
+            vcf_out.write(rec_copy)
 
+        elif anc1 in altsU:
+            # Ancestral equals one of the ALTs -> flip so REF becomes ancestral
+            var_anc_flip += 1
+            flip_idx = altsU.index(anc1)
+
+            new_ref  = rec.alts[flip_idx]           # ancestral
+            new_alts = [rec.ref] + [a for i, a in enumerate(rec.alts) if i != flip_idx]
+
+            rec_copy = vcf_out.new_record()
+            copy_common_fields(rec, rec_copy)
+            rec_copy.ref  = new_ref
+            rec_copy.alts = tuple(new_alts)
+
+            # Copy INFO but drop AC/AF/AN (no longer correct after flipping)
+            for k, v in rec.info.items():
+                if k in valid_info_keys and k not in ("AC", "AF", "AN"):
+                    rec_copy.info[k] = v
+            rec_copy.info["AA"] = anc1
+
+            # Build a complete allele index remap: old->new
+            # old indices: 0 = old REF, 1..n = old ALTs
+            # new: 0 = old ALT[flip_idx], 1 = old REF, 2.. = remaining old ALTs (order preserved)
+            old_ref = rec.ref
+            old_alts = list(rec.alts)
+            # Map by strings (robust for multi-allelic)
+            new_index_by_allele = {("REF", new_ref): 0}
+            # new 1 is old REF
+            new_index_by_allele[("REF", old_ref)] = 1
+            # Fill remaining new indices (2..) with the other old ALTs
+            rem_alts = [a for i, a in enumerate(old_alts) if i != flip_idx]
+            for j, a in enumerate(rem_alts, start=2):
+                new_index_by_allele[("ALT", a)] = j
+
+            # Construct old->new numeric mapping
+            allele_map = {0: 1}  # old REF -> new index 1
+            # flipped ALT -> 0
+            allele_map[flip_idx + 1] = 0
+            # other ALTs
+            for i, a in enumerate(old_alts):
+                if i == flip_idx:
+                    continue
+                old_num = i + 1
+                allele_map[old_num] = new_index_by_allele[("ALT", a)]
+
+            # Remap GTs
+            for sample in rec.samples:
+                gt = rec.samples[sample].get("GT")
+                rec_copy.samples[sample]["GT"] = remap_genotype(gt, allele_map)
+
+            vcf_out.write(rec_copy)
+
+        else:
+            # Ancestral doesn't match REF or any ALT -> count and skip
+            var_anc_nomatch += 1
+
+    else:
+        # No ancestral call for this variant; we simply do not modify or count match/flip buckets.
+        pass
+
+# ---------- Close ----------
 vcf_in.close()
 vcf_out.close()
 
-# === Write summary ===
+# Derive num_invar from totals counted
+num_invar = num_sites - num_var
+
+# ---------- Write summary TSV ----------
 with open(summary_path, "w", newline="") as outtsv:
-    writer = csv.writer(outtsv, delimiter="\t")
-    writer.writerow([
-        "chrom", "total_variants", "nonvariant_skipped", "symbolic_skipped",
-        "ancestral_calls", "missing_anc1", "ref_match", "unchanged_sites",
-        "flipped_sites", "nomatch_sites", "sites_written",
-        "ancestral_alleles", "derived_alleles",
-        "invariant_total", "invariant_anc_match", "invariant_anc_mismatch",
-        "invariant_anc_missing", "invariant_no_anc_entry"
+    w = csv.writer(outtsv, delimiter="\t")
+    w.writerow([
+        "chrom",
+        "num_sites", "num_var", "num_invar",
+        "num_anc",
+        "num_sites_with_anc", "num_var_with_anc", "num_invar_with_anc",
+        "var_anc_match", "invar_anc_match",
+        "var_anc_flip",  "invar_anc_flip",
+        "var_anc_nomatch","invar_anc_nomatch"
     ])
-    writer.writerow([
-        chrom_target, n_total, n_nonvariant, n_symbolic_alt,
-        len(ancestral_dict), n_missing_anc1, n_ref_match, n_written - n_flipped,
-        n_flipped, n_nomatch, n_written, ancestral_alleles, derived_alleles,
-        invar_total, invar_anc_match, invar_anc_mismatch,
-        invar_anc_missing, invar_no_anc
+    w.writerow([
+        chrom_target,
+        num_sites, num_var, num_invar,
+        num_anc,
+        num_sites_with_anc, num_var_with_anc, num_invar_with_anc,
+        var_anc_match, invar_anc_match,
+        var_anc_flip,  invar_anc_flip,
+        var_anc_nomatch, invar_anc_nomatch
     ])
-print(f"Finished {chrom_target}")                                    
+
+print(f"[{chrom_target}] Done. Wrote: {output_path} and {summary_path}")
+
+                               
