@@ -22,7 +22,7 @@ bear_palette_3 <- c("Baranof & Chichagof Islands" = "violet",
                         "Mainland Alaska" = "dodgerblue4",
                         'Kenai & Katmai'='maroon2')
 
-                        metadata <- read.csv('~/Library/Mobile Documents/com~apple~CloudDocs/Documents/Documents - Ellie’s MacBook Pro (2)/WSU-Business/Rangewide_bear/Sample_Information_Final/Sample_Sheet_Final_Oct24.csv', header = TRUE)
+metadata <- read.csv('~/Library/Mobile Documents/com~apple~CloudDocs/Documents/Documents - Ellie’s MacBook Pro (2)/WSU-Business/Rangewide_bear/Sample_Information_Final/Sample_Sheet_Final_Oct24.csv', header = TRUE)
 
 
 remove_list <- c('BB_WSU_Adak', 'BB_WSU_Cooke', 'BB_WSU_Frank', 'BB_WSU_Willow', 'BB_WSU_Dodge',
