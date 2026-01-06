@@ -20,6 +20,10 @@ bcftools query -f '%CHROM\t%POS\t%REF\t%ALT\t%AN\t%DP\n' Aug25_haploidYcall_brow
 #mean AN is 113
 bcftools view -i 'AN > 95' Aug25_haploidYcall_brownbear_lowqual_header_rename_brownbear_5x.gvcf.gz | bcftools view -i 'INFO/DP > 400 && INFO/DP < 4500'  -O z -o Aug25_haploidYcall_brownbear_lowqual_header_rename_brownbear_5x_AN95_DP.gvcf.gz
 
+#remove indels and restrict to 'bi-allelic' sites
+bcftools_viewCommand=view -M 2 -O z -o Aug25_haploidYcall_brownbear_lowqual_header_rename_brownbear_5x_AN95_DP_M2.gvcf.gz Aug25_haploidYcall_brownbear_lowqual_header_rename_brownbear_5x_AN95_DP.gvcf.gz
+
+bcftools_filterCommand=filter -e TYPE="indel" -O z -o Aug25_haploidYcall_brownbear_lowqual_header_rename_brownbear_5x_AN95_DP_M2_indel.gvcf.gz Aug25_haploidYcall_brownbear_lowqual_header_rename_brownbear_5x_AN95_DP_M2.gvcf.gz
 
 ###Next return to previous file with black and polar bears to do species-level filtering for trees
 Aug25_haploidYcall_brownbear_lowqual_header_rename_brownbear.gvcf.gz
