@@ -17,5 +17,5 @@ bcftools view -i 'INFO/DP > 400 && INFO/DP < 3000' diploidXcall_female_brownbear
 #restrict to only brown bears
 bcftools view -S xchrom_brownbear.txt diploidXcall_female_brownbear_M2_indel_repmap1_lq_header_DP_rename.gvcf.gz -O z -o diploidXcall_female_brownbear_M2_indel_repmap1_lq_header_DP_rename_nocapnosp.gvcf.gz
 
-#allelic filter (this should just remove some low qual sites for pi, and should not affect inference of species structure)
+#allelic filter 
 bcftools view -i 'AN > 113' diploidXcall_female_brownbear_M2_indel_repmap1_lq_header_DP_rename_nocapnosp.gvcf.gz -O z -o diploidXcall_female_brownbear_M2_indel_repmap1_lq_header_DP_rename_nocapnosp_AN.gvcf.gz
