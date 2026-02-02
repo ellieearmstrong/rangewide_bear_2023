@@ -1,0 +1,377 @@
+ID,New_ID,Group
+SRR17940138_Shotgun_sequencing_of_Ursus_arctos,B_AK_9_pub,Kenai & Katmai
+22116FL-01-02-51_S90_L002,BB_AK_12Z_1,Mainland Alaska
+112469_merged,BB_AK_12Z_10,Mainland Alaska
+104259_S36_L001,BB_AK_12Z_2,Mainland Alaska
+104682_merged,BB_AK_12Z_3,Mainland Alaska
+22116FL-01-02-01_S40_L002,BB_AK_12Z_4,Mainland Alaska
+105140_merged,BB_AK_12Z_5,Mainland Alaska
+22116FL-02-01-24_S24_L004,BB_AK_12Z_6,Mainland Alaska
+GB_0105144_merged,BB_AK_12Z_7,Mainland Alaska
+112389_merged,BB_AK_12Z_8,Mainland Alaska
+112466_merged,BB_AK_12Z_9,Mainland Alaska
+8_merged,BB_AK_13_1,Kenai & Katmai
+9_merged,BB_AK_13_2,Kenai & Katmai
+10_merged,BB_AK_13_3,Kenai & Katmai
+11_merged,BB_AK_13_4,Kenai & Katmai
+SRR830337_Uarc_EP040,BB_AK_13_pub,Mainland Alaska
+3_merged,BB_AK_13A_3,Mainland Alaska
+18032FL-129-02-01_S3_L001,BB_AK_13A_4,Mainland Alaska
+5_merged,BB_AK_13A_5,Mainland Alaska
+6_merged,BB_AK_13A_6,Mainland Alaska
+7_merged,BB_AK_13A_7,Mainland Alaska
+SRR17940139_Shotgun_sequencing_of_Ursus_arctos,BB_AK_14_pub,Mainland Alaska
+393_merged,BB_AK_15_1,Kenai & Katmai
+18032FL-129-03-22_S32_L001,BB_AK_15_2,Kenai & Katmai
+398_merged,BB_AK_15_3,Kenai & Katmai
+399_merged,BB_AK_15_4,Kenai & Katmai
+18032FL-129-03-23_S33_L001,BB_AK_15_5,Kenai & Katmai
+GRZ_brownbear_merged,BB_AK_15_pub,Kenai & Katmai
+19648_merged,BB_AK_1A_1,Inside Passage
+17609_merged,BB_AK_1C_1,Inside Passage
+18520_merged,BB_AK_1C_2,Inside Passage
+18524_merged,BB_AK_1C_3,Inside Passage
+18032FL-129-03-01_S11_L001,BB_AK_1C_4,Inside Passage
+18609_merged,BB_AK_1C_5,Inside Passage
+21569_merged,BB_AK_1C_6,Inside Passage
+17591_merged,BB_AK_1D_1,Inside Passage
+17595_merged,BB_AK_1D_2,Inside Passage
+17596_merged,BB_AK_1D_3,Inside Passage
+18032FL-129-03-16_S26_L001,BB_AK_1D_4,Inside Passage
+18032FL-129-03-17_S27_L001,BB_AK_1D_5,Inside Passage
+20680_merged,BB_AK_1D_6,Inside Passage
+20684_merged,BB_AK_1D_7,Inside Passage
+22116FL-02-01-25_S25_L004,BB_AK_20C_1,Mainland Alaska
+22116FL-02-01-22_S22_L004,BB_AK_20C_10,Mainland Alaska
+105550_merged,BB_AK_20C_2,Mainland Alaska
+22116FL-02-01-29_S29_L004,BB_AK_20C_3,Mainland Alaska
+22116FL-01-02-16_S55_L002,BB_AK_20C_4,Mainland Alaska
+22116FL-01-02-12_S51_L002,BB_AK_20C_5,Mainland Alaska
+22116FL-01-02-21_S60_L002,BB_AK_20C_6,Mainland Alaska
+112393_merged,BB_AK_20C_7,Mainland Alaska
+22116FL-02-01-46_S46_L004,BB_AK_20C_8,Mainland Alaska
+22116FL-02-01-47_S47_L004,BB_AK_20C_9,Mainland Alaska
+22116FL-05-01-10_S8_L003,BB_AK_20D_1,Mainland Alaska
+202_S30_L001,BB_AK_20D_2,Mainland Alaska
+203_S31_L001,BB_AK_20D_3,Mainland Alaska
+204_S32_L001,BB_AK_20D_4,Mainland Alaska
+207_S33_L001,BB_AK_20D_5,Mainland Alaska
+208_S34_L001,BB_AK_20D_6,Mainland Alaska
+18032FL-129-03-21_S31_L001,BB_AK_20D_7,Mainland Alaska
+18032FL-129-02-05_S7_L001,BB_AK_20D_8,Mainland Alaska
+215_S35_L001,BB_AK_20D_9,Mainland Alaska
+104694_merged,BB_AK_20E_1,Mainland Alaska
+111856_merged,BB_AK_20E_10,Mainland Alaska
+111857_merged,BB_AK_20E_11,Mainland Alaska
+104696_merged,BB_AK_20E_2,Mainland Alaska
+104698_merged,BB_AK_20E_3,Mainland Alaska
+18032FL-129-03-08_S18_L001,BB_AK_20E_4,Mainland Alaska
+111451_S39_L001,BB_AK_20E_5,Mainland Alaska
+22116FL-01-02-50_S89_L002,BB_AK_20E_6,Mainland Alaska
+22116FL-02-01-11_S11_L004,BB_AK_20E_7,Mainland Alaska
+111459_merged,BB_AK_20E_8,Mainland Alaska
+111830_merged,BB_AK_20E_9,Mainland Alaska
+22116FL-01-02-46_S85_L002,BB_AK_20F_1,Mainland Alaska
+112468_merged,BB_AK_20F_10,Mainland Alaska
+22116FL-02-01-34_S34_L004,BB_AK_20F_2,Mainland Alaska
+22116FL-02-01-35_S35_L004,BB_AK_20F_3,Mainland Alaska
+22116FL-02-01-18_S18_L004,BB_AK_20F_4,Mainland Alaska
+22116FL-02-01-21_S21_L004,BB_AK_20F_5,Mainland Alaska
+22116FL-02-01-38_S38_L004,BB_AK_20F_6,Mainland Alaska
+22116FL-02-01-40_S40_L004,BB_AK_20F_7,Mainland Alaska
+22116FL-02-01-41_S41_L004,BB_AK_20F_8,Mainland Alaska
+112392_merged,BB_AK_20F_9,Mainland Alaska
+22116FL-01-02-45_S84_L002,BB_AK_21A_1,Mainland Alaska
+111926_merged,BB_AK_21C_1,Mainland Alaska
+22116FL-02-01-13_S13_L004,BB_AK_21D_1,Mainland Alaska
+22116FL-01-02-41_S80_L002,BB_AK_21D_2,Mainland Alaska
+22116FL-02-01-28_S28_L004,BB_AK_21D_3,Mainland Alaska
+22116FL-05-01-20_S11_L003_repair,BB_AK_21D_4,Mainland Alaska
+22116FL-02-01-42_S42_L004,BB_AK_21D_5,Mainland Alaska
+22116FL-02-01-43_S43_L004,BB_AK_21D_6,Mainland Alaska
+22116FL-02-01-45_S45_L004,BB_AK_21D_7,Mainland Alaska
+SRR17940144_Shotgun_sequencing_of_Ursus_arctos,BB_AK_22_pub,Mainland Alaska
+22116FL-05-01-19_S10_L003,BB_AK_22A_1,Mainland Alaska
+112024_merged,BB_AK_22B_1,Mainland Alaska
+105348_merged,BB_AK_23Z_1,Mainland Alaska
+22116FL-02-01-12_S12_L004,BB_AK_23Z_2,Mainland Alaska
+14020_GAAR_merged,BB_AK_24_1,Mainland Alaska
+14024_GAAR_S43_L001,BB_AK_24_2,Mainland Alaska
+14030_merged,BB_AK_24_3,Mainland Alaska
+18032FL-129-03-25_S35_L001,BB_AK_24_4,Mainland Alaska
+15009_GAAR_S48_L001,BB_AK_24_5,Mainland Alaska
+1601_GAAR_merged,BB_AK_24_6,Mainland Alaska
+1603_GAAR_merged,BB_AK_24_7,Mainland Alaska
+22116FL-05-01-31_S22_L003,BB_AK_24_8,Mainland Alaska
+18032FL-129-02-08_S10_L001,BB_AK_24_9,Mainland Alaska
+SRR22801807_Range-wide_whole-genome_resequencing_of_the_brown_bear,BB_AK_24_pub1,Mainland Alaska
+SRR22801818_Range-wide_whole-genome_resequencing_of_the_brown_bear,BB_AK_24_pub2,Mainland Alaska
+SRR22801845_Range-wide_whole-genome_resequencing_of_the_brown_bear,BB_AK_24_pub3,Mainland Alaska
+SRR22801856_Range-wide_whole-genome_resequencing_of_the_brown_bear,BB_AK_24_pub4,Mainland Alaska
+22116FL-01-02-47_S86_L002,BB_AK_25A_1,Mainland Alaska
+22116FL-01-02-32_S71_L002,BB_AK_25A_10,Mainland Alaska
+22116FL-05-01-18_S9_L003,BB_AK_25A_2,Mainland Alaska
+105541_merged,BB_AK_25A_3,Mainland Alaska
+22116FL-02-01-27_S27_L004,BB_AK_25A_4,Mainland Alaska
+22116FL-02-01-33_S33_L004,BB_AK_25A_5,Mainland Alaska
+111999_merged,BB_AK_25A_6,Mainland Alaska
+22116FL-02-01-17_S17_L004,BB_AK_25A_7,Mainland Alaska
+22116FL-02-01-20_S20_L004,BB_AK_25A_8,Mainland Alaska
+112451_merged,BB_AK_25A_9,Mainland Alaska
+111867_merged,BB_AK_25D_1,Mainland Alaska
+22116FL-02-01-31_S31_L004,BB_AK_25D_2,Mainland Alaska
+22116FL-02-01-32_S32_L004,BB_AK_25D_3,Mainland Alaska
+112022_merged,BB_AK_25D_4,Mainland Alaska
+22116FL-02-01-36_S36_L004,BB_AK_25D_5,Mainland Alaska
+22116FL-02-01-19_S19_L004,BB_AK_25D_6,Mainland Alaska
+112116_merged,BB_AK_25D_7,Mainland Alaska
+112119_merged,BB_AK_25D_8,Mainland Alaska
+22116FL-02-01-39_S39_L004,BB_AK_25D_9,Mainland Alaska
+22116FL-05-01-01_S1_L003_repair,BB_AK_26B_1,Mainland Alaska
+22116FL-05-01-08_S7_L003,BB_AK_26B_10,Mainland Alaska
+18032FL-129-03-20_S30_L001,BB_AK_26B_11,Mainland Alaska
+182_S29_L001,BB_AK_26B_12,Mainland Alaska
+183_merged,BB_AK_26B_13,Mainland Alaska
+115_merged,BB_AK_26B_2,Mainland Alaska
+22116FL-05-01-02_S2_L003,BB_AK_26B_3,Mainland Alaska
+22116FL-05-01-03_S3_L003,BB_AK_26B_4,Mainland Alaska
+154_S28_L001,BB_AK_26B_5,Mainland Alaska
+22116FL-05-01-05_S4_L003,BB_AK_26B_6,Mainland Alaska
+22116FL-05-01-06_S5_L003_repair,BB_AK_26B_7,Mainland Alaska
+167_merged,BB_AK_26B_8,Mainland Alaska
+18032FL-129-02-04_S6_L001,BB_AK_26B_9,Mainland Alaska
+43157_brownbear_merged,BB_AK_4_pub1,Baranof & Chichagof Islands
+SRR22801868_Range-wide_whole-genome_resequencing_of_the_brown_bear,BB_AK_4_pub10,Admiralty
+SRR22801879_Range-wide_whole-genome_resequencing_of_the_brown_bear,BB_AK_4_pub11,Admiralty
+SRR22801890_Range-wide_whole-genome_resequencing_of_the_brown_bear,BB_AK_4_pub12,Admiralty
+SRR22801901_Range-wide_whole-genome_resequencing_of_the_brown_bear,BB_AK_4_pub13,Inside Passage
+SRR22801902_Range-wide_whole-genome_resequencing_of_the_brown_bear,BB_AK_4_pub14,Admiralty
+SRR518717_652_ABC2_Lucky,BB_AK_4_pub15,Baranof & Chichagof Islands
+SRR830213_Uarc_EP050,BB_AK_4_pub16,Admiralty
+56159_brownbear_merged,BB_AK_4_pub2,Baranof & Chichagof Islands
+63855_brownbear_merged,BB_AK_4_pub3,Baranof & Chichagof Islands
+63856_brownbear_merged,BB_AK_4_pub4,Baranof & Chichagof Islands
+63863_brownbear_merged,BB_AK_4_pub5,Baranof & Chichagof Islands
+63864_brownbear_merged,BB_AK_4_pub6,Admiralty
+SRR1692419_Ursus_arctos_Chichagof_1,BB_AK_4_pub8,Baranof & Chichagof Islands
+SRR1693624_Ursus_arctos_Chichagof_2,BB_AK_4_pub9,Baranof & Chichagof Islands
+17611_merged,BB_AK_4Z_1,Baranof & Chichagof Islands
+18683_merged,BB_AK_4Z_10,Baranof & Chichagof Islands
+20753_merged,BB_AK_4Z_11,Baranof & Chichagof Islands
+20773_merged,BB_AK_4Z_12,Baranof & Chichagof Islands
+20781_merged,BB_AK_4Z_13,Baranof & Chichagof Islands
+20787_merged,BB_AK_4Z_14,Inside Passage
+21648_merged,BB_AK_4Z_15,Admiralty
+21652_merged,BB_AK_4Z_16,Baranof & Chichagof Islands
+17612_merged,BB_AK_4Z_2,Admiralty
+18032FL-129-03-15_S25_L001,BB_AK_4Z_3,Admiralty
+18516_merged,BB_AK_4Z_4,Baranof & Chichagof Islands
+18525_merged,BB_AK_4Z_5,Admiralty
+18528_merged,BB_AK_4Z_6,Baranof & Chichagof Islands
+18536_merged,BB_AK_4Z_7,Baranof & Chichagof Islands
+18538_merged,BB_AK_4Z_8,Inside Passage
+18671_merged,BB_AK_4Z_9,Admiralty
+18032FL-129-03-13_S23_L001,BB_AK_5A_1,Inside Passage
+17605_merged,BB_AK_5A_10,Inside Passage
+18624_merged,BB_AK_5A_11,Inside Passage
+18648_merged,BB_AK_5A_12,Inside Passage
+18650_merged,BB_AK_5A_13,Inside Passage
+20701_merged,BB_AK_5A_14,Inside Passage
+18032FL-129-03-14_S24_L001,BB_AK_5A_2,Inside Passage
+16558_merged,BB_AK_5A_3,Inside Passage
+16559_merged,BB_AK_5A_4,Inside Passage
+16560_merged,BB_AK_5A_5,Inside Passage
+16561_merged,BB_AK_5A_6,Inside Passage
+17600_merged,BB_AK_5A_7,Inside Passage
+17601_merged,BB_AK_5A_8,Inside Passage
+17602_merged,BB_AK_5A_9,Inside Passage
+101182_merged,BB_AK_8_1,Kodiak
+1800143_merged,BB_AK_8_10,Kodiak
+1800146_merged,BB_AK_8_11,Kodiak
+1800166_merged,BB_AK_8_12,Kodiak
+1800255_merged,BB_AK_8_13,Kodiak
+1800265_merged,BB_AK_8_14,Kodiak
+1800082_merged,BB_AK_8_2,Kodiak
+1800085_merged,BB_AK_8_3,Kodiak
+1800086_merged,BB_AK_8_4,Kodiak
+1800112_merged,BB_AK_8_5,Kodiak
+1800114_merged,BB_AK_8_6,Kodiak
+1800115_merged,BB_AK_8_7,Kodiak
+1800118_merged,BB_AK_8_8,Kodiak
+1800139_merged,BB_AK_8_9,Kodiak
+SRR22801829_Range-wide_whole-genome_resequencing_of_the_brown_bear,BB_AK_8_pub,Kodiak
+027_KATM_merged,BB_AK_9_1,Kenai & Katmai
+421_LACL_merged,BB_AK_9_10,Kenai & Katmai
+425_merged,BB_AK_9_11,Kenai & Katmai
+22116FL-05-01-35_S26_L003,BB_AK_9_12,Kenai & Katmai
+502_LACL_merged,BB_AK_9_13,Kenai & Katmai
+22116FL-05-01-36_S27_L003,BB_AK_9_14,Kenai & Katmai
+18032FL-129-02-07_S9_L001,BB_AK_9_15,Kenai & Katmai
+18032FL-129-03-24_S34_L001,BB_AK_9_16,Kenai & Katmai
+22116FL-05-01-22_S13_L003,BB_AK_9_2,Kenai & Katmai
+22116FL-05-01-23_S14_L003_repair,BB_AK_9_3,Kenai & Katmai
+18032FL-129-02-02_S4_L001,BB_AK_9_4,Kenai & Katmai
+22116FL-05-01-24_S15_L003,BB_AK_9_5,Kenai & Katmai
+22116FL-05-01-25_S16_L003_repair,BB_AK_9_6,Kenai & Katmai
+087_KATM_merged,BB_AK_9_7,Kenai & Katmai
+22116FL-05-01-26_S17_L003,BB_AK_9_8,Kenai & Katmai
+22116FL-05-01-27_S18_L003,BB_AK_9_9,Kenai & Katmai
+SRR17940140_Shotgun_sequencing_of_Ursus_arctos,BB_AK_pub_26_1,Kenai & Katmai
+SRR17940141_Shotgun_sequencing_of_Ursus_arctos,BB_AK_pub_26_2,Kenai & Katmai
+SRR17940142_Shotgun_sequencing_of_Ursus_arctos,BB_AK_pub_26_3,Kenai & Katmai
+SRR17940143_Shotgun_sequencing_of_Ursus_arctos,BB_AK_pub_26_4,Kenai & Katmai
+22116FL-01-02-49_S88_L002,BB_CAN_Alb_1,Alberta
+22116FL-01-02-24_S63_L002,BB_CAN_Alb_10,Alberta
+18032FL-129-03-06_S16_L001,BB_CAN_Alb_11,Alberta
+22116FL-01-02-29_S68_L002,BB_CAN_Alb_12,Alberta
+22116FL-01-02-04_S43_L002,BB_CAN_Alb_13,Alberta
+GBF156_merged,BB_CAN_Alb_14,Alberta
+22116FL-05-01-46_S31_L003,BB_CAN_Alb_15,Alberta
+18032FL-129-03-18_S28_L001,BB_CAN_Alb_16,Alberta
+GBM140_merged,BB_CAN_Alb_17,Alberta
+22116FL-02-01-08_S8_L004,BB_CAN_Alb_18,Alberta
+GBM144_merged,BB_CAN_Alb_19,Alberta
+22116FL-02-01-05_S5_L004,BB_CAN_Alb_2,Alberta
+GBM149_merged,BB_CAN_Alb_20,Alberta
+22116FL-02-01-02_S2_L004,BB_CAN_Alb_3,Alberta
+22116FL-02-01-06_S6_L004,BB_CAN_Alb_4,Alberta
+G176_merged,BB_CAN_Alb_5,Alberta
+18032FL-129-03-19_S29_L001,BB_CAN_Alb_6,Alberta
+18032FL-129-03-07_S17_L001,BB_CAN_Alb_7,Alberta
+22116FL-02-01-07_S7_L004,BB_CAN_Alb_8,Alberta
+22116FL-01-02-48_S87_L002,BB_CAN_Alb_9,Alberta
+22116FL-02-01-01_S1_L004,BB_CAN_BC_1,British Columbia (Central)
+22116FL-01-02-20_S59_L002,BB_CAN_BC_10,British Columbia (South Rockies)
+EVGM50_Darren_merged,BB_CAN_BC_11,British Columbia (South Rockies)
+EVGM_Feng_merged,BB_CAN_BC_12,British Columbia (South Rockies)
+22116FL-01-02-03_S42_L002,BB_CAN_BC_13,British Columbia (South Rockies)
+22116FL-01-02-38_S77_L002,BB_CAN_BC_14,British Columbia (South Purcells)
+22116FL-02-01-04_S4_L004,BB_CAN_BC_15,British Columbia (South Purcells)
+GF38_merged,BB_CAN_BC_16,British Columbia (Central)
+22116FL-01-02-10_S49_L002,BB_CAN_BC_17,British Columbia (South Purcells)
+22116FL-05-01-47_S32_L003_repair,BB_CAN_BC_18,British Columbia (South Purcells)
+GM202_Julian_merged,BB_CAN_BC_19,British Columbia (South Purcells)
+22116FL-05-01-40_S28_L003,BB_CAN_BC_2,British Columbia (South Rockies)
+22116FL-02-01-10_S10_L004,BB_CAN_BC_20,British Columbia (South Purcells)
+GM204_Amos_merged,BB_CAN_BC_21,British Columbia (South Purcells)
+22116FL-01-02-35_S74_L002,BB_CAN_BC_22,British Columbia (South Purcells)
+22116FL-05-01-48_S33_L003,BB_CAN_BC_23,British Columbia (South Purcells)
+GM223_Yves_merged,BB_CAN_BC_24,British Columbia (South Purcells)
+22116FL-01-02-14_S53_L002,BB_CAN_BC_25,British Columbia (Central)
+Lupin_merged,BB_CAN_BC_26,British Columbia (Central)
+22116FL-01-02-23_S62_L002,BB_CAN_BC_27,British Columbia (Central)
+PWOR_Kill_merged,BB_CAN_BC_28,British Columbia (Central)
+22116FL-01-02-07_S46_L002,BB_CAN_BC_3,British Columbia (South Rockies)
+22116FL-01-02-36_S75_L002,BB_CAN_BC_30,British Columbia (Central)
+TRex_S38_L001,BB_CAN_BC_31,British Columbia (Central)
+22116FL-05-01-41_S29_L003,BB_CAN_BC_4,British Columbia (South Rockies)
+EVGF73_Melissa_merged,BB_CAN_BC_5,British Columbia (South Rockies)
+22116FL-01-02-18_S57_L002,BB_CAN_BC_6,British Columbia (South Rockies)
+22116FL-01-02-06_S45_L002,BB_CAN_BC_7,British Columbia (South Rockies)
+22116FL-01-02-02_S41_L002,BB_CAN_BC_8,British Columbia (South Rockies)
+22116FL-01-02-13_S52_L002,BB_CAN_BC_9,British Columbia (South Rockies)
+SRR22801895_Range-wide_whole-genome_resequencing_of_the_brown_bear,BB_CAN_BC_pub,British Columbia (South Purcells)
+SRR22801883_Range-wide_whole-genome_resequencing_of_the_brown_bear,BB_CAN_pub_HB_1,Hudson Bay
+SRR22801893_Range-wide_whole-genome_resequencing_of_the_brown_bear,BB_CAN_pub_HB_10,Hudson Bay
+SRR22801894_Range-wide_whole-genome_resequencing_of_the_brown_bear,BB_CAN_pub_HB_11,Hudson Bay
+SRR22801884_Range-wide_whole-genome_resequencing_of_the_brown_bear,BB_CAN_pub_HB_2,Hudson Bay
+SRR22801885_Range-wide_whole-genome_resequencing_of_the_brown_bear,BB_CAN_pub_HB_3,Hudson Bay
+SRR22801886_Range-wide_whole-genome_resequencing_of_the_brown_bear,BB_CAN_pub_HB_4,Hudson Bay
+SRR22801887_Range-wide_whole-genome_resequencing_of_the_brown_bear,BB_CAN_pub_HB_5,Hudson Bay
+SRR22801888_Range-wide_whole-genome_resequencing_of_the_brown_bear,BB_CAN_pub_HB_6,Hudson Bay
+SRR22801889_Range-wide_whole-genome_resequencing_of_the_brown_bear,BB_CAN_pub_HB_7,Hudson Bay
+SRR22801891_Range-wide_whole-genome_resequencing_of_the_brown_bear,BB_CAN_pub_HB_8,Hudson Bay
+SRR22801892_Range-wide_whole-genome_resequencing_of_the_brown_bear,BB_CAN_pub_HB_9,Hudson Bay
+SRR22801896,BB_EURO_1,European brown bear
+90085_merged,BB_L48_Cab_1,Cabinets
+90199_merged,BB_L48_Cab_2,Cabinets
+91893_merged,BB_L48_Cab_3,Cabinets
+92174_merged,BB_L48_Cab_4,Cabinets
+GB_115184_merged,BB_L48_GYE_1,GYE
+GB_577056_merged,BB_L48_GYE_10,GYE
+GB_115253_merged,BB_L48_GYE_2,GYE
+GB_116905_merged,BB_L48_GYE_3,GYE
+GB_120740_merged,BB_L48_GYE_4,GYE
+GB_121019_merged,BB_L48_GYE_5,GYE
+GB_122748_merged,BB_L48_GYE_6,GYE
+GB_125800_merged,BB_L48_GYE_7,GYE
+GB_125813_merged,BB_L48_GYE_8,GYE
+GB_125827_merged,BB_L48_GYE_9,GYE
+SRR22801848_Range-wide_whole-genome_resequencing_of_the_brown_bear,BB_L48_GYE_pub,GYE
+206500_merged,BB_L48_NCD_1,NCDE
+206509_merged,BB_L48_NCD_10,NCDE
+206510_merged,BB_L48_NCD_11,NCDE
+206511_merged,BB_L48_NCD_12,NCDE
+206512_merged,BB_L48_NCD_13,NCDE
+206501_merged,BB_L48_NCD_2,NCDE
+206502_merged,BB_L48_NCD_3,NCDE
+206503_merged,BB_L48_NCD_4,NCDE
+206504_merged,BB_L48_NCD_5,NCDE
+206505_merged,BB_L48_NCD_6,NCDE
+206506_merged,BB_L48_NCD_7,NCDE
+206507_merged,BB_L48_NCD_8,NCDE
+206508_merged,BB_L48_NCD_9,NCDE
+107596012_brownbear_merged,BB_L48_NCD_pub,NCDE
+SRR22801847_Range-wide_whole-genome_resequencing_of_the_brown_bear,BB_L48_pub_Sel,Selkirks
+90565_merged,BB_L48_Sel_1,Selkirks
+95258_merged,BB_L48_Sel_10,Selkirks
+91635_merged,BB_L48_Sel_2,Selkirks
+91849_merged,BB_L48_Sel_3,Selkirks
+91946_merged,BB_L48_Sel_4,Selkirks
+92035_merged,BB_L48_Sel_5,Selkirks
+92371_merged,BB_L48_Sel_6,Selkirks
+92377_merged,BB_L48_Sel_7,Selkirks
+93269_merged,BB_L48_Sel_8,Selkirks
+94289_merged,BB_L48_Sel_9,Selkirks
+90675_merged,BB_L48_Yaak_1,Cabinets
+90901_merged,BB_L48_Yaak_2,Yaak
+90932_merged,BB_L48_Yaak_3,Yaak
+91813_merged,BB_L48_Yaak_4,Yaak
+93839_merged,BB_L48_Yaak_5,Yaak
+94292_merged,BB_L48_Yaak_6,Yaak
+22116FL-04-01-31_S31_L003,BB_unknown,Inside Passage
+973_wsu,BB_WSU_973,GYE
+974_wsu,BB_WSU_974,GYE
+975_wsu,BB_WSU_975,GYE
+SRR11336675_Whole_genome_of_ursos_arctos,BB_WSU_Adak,GYE
+SRR11336682_Whole_genome_of_ursos_arctos,BB_WSU_Dodge,GYE
+SRR11336677_Whole_genome_of_ursos_arctos,BB_WSU_Frank,GYE
+SRR11336685_Whole_genome_of_ursos_arctos,BB_WSU_John,GYE
+SRR11336684_Whole_genome_of_ursos_arctos,BB_WSU_Oakley,GYE
+SRR11336678_Whole_genome_of_ursos_arctos,BB_WSU_Willow,GYE
+SRR11336683_Whole_genome_of_ursos_arctos,BB_WSU_Zuri,GYE
+GU573485.1_polarbear,Polar_bear_1,Polar bear
+JX196376.1_polarbear,Polar_bear_10,Polar bear
+JX196377.1_polarbear,Polar_bear_11,Polar bear
+JX196378.1_polarbear,Polar_bear_12,Polar bear
+JX196379.1_polarbear,Polar_bear_13,Polar bear
+JX196380.1_polarbear,Polar_bear_14,Polar bear
+JX196381.1_polarbear,Polar_bear_15,Polar bear
+JX196382.1_polarbear,Polar_bear_16,Polar bear
+JX196383.1_polarbear,Polar_bear_17,Polar bear
+JX196384.1_polarbear,Polar_bear_18,Polar bear
+JX196385.1_polarbear,Polar_bear_19,Polar bear
+GU573488.1_polarbear,Polar_bear_2,Polar bear
+JX196386.1_polarbear,Polar_bear_20,Polar bear
+JX196387.1_polarbear,Polar_bear_21,Polar bear
+JX196388.1_polarbear,Polar_bear_22,Polar bear
+JX196389.1_polarbear,Polar_bear_23,Polar bear
+JX196390.1_polarbear,Polar_bear_24,Polar bear
+JX196391.1_polarbear,Polar_bear_25,Polar bear
+JX196392.1_polarbear,Polar_bear_26,Polar bear
+NC_003428.1_polarbear,Polar_bear_27,Polar bear
+SRR17940145,Polar_bear_28,Polar bear
+SRR17940146,Polar_bear_29,Polar bear
+GU573490.1_polarbear,Polar_bear_3,Polar bear
+AF303111.1_polarbear,Polar_bear_30,Polar bear
+AJ428577.1_polarbear,Polar_bear_31,Polar bear
+AP012594.1_polarbear,Polar_bear_32,Polar bear
+AP012595.1_polarbear,Polar_bear_33,Polar bear
+AP012596.1_polarbear,Polar_bear_34,Polar bear
+AP012597.1_polarbear,Polar_bear_35,Polar bear
+JX196370.1_polarbear,Polar_bear_4,Polar bear
+JX196371.1_polarbear,Polar_bear_5,Polar bear
+JX196372.1_polarbear,Polar_bear_6,Polar bear
+JX196373.1_polarbear,Polar_bear_7,Polar bear
+JX196374.1_polarbear,Polar_bear_8,Polar bear
+JX196375.1_polarbear,Polar_bear_9,Polar bear
